@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khai Yuan Chee - Resume (Design 1)</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2b6cb0;
+            --primary-dark: #1a4971;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --border: #e2e8f0;
+            --accent: #ebf4ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: #edf2f7;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bg);
+        }
+
+        @media screen {
+            .page {
+                margin: 2rem auto;
+                border-radius: 8px;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 2.5rem 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.25rem;
+        }
+
+        header .subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-bar a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+
+        .contact-bar a:hover { color: white; }
+
+        .contact-bar svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 3rem 2.5rem;
+        }
+
+        section { margin-bottom: 1.75rem; }
+        section:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Experience */
+        .job { margin-bottom: 1.25rem; }
+        .job:last-child { margin-bottom: 0; }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
+        }
+
+        .job-title { font-weight: 700; font-size: 0.95rem; }
+        .job-title .role { color: var(--text-light); font-weight: 400; }
+        .job-date { font-size: 0.85rem; color: var(--text-light); white-space: nowrap; }
+
+        .job ul { list-style: none; padding-left: 0; }
+
+        .job li {
+            position: relative;
+            padding-left: 1rem;
+            font-size: 0.88rem;
+            margin-bottom: 0.3rem;
+            color: #4a5568;
+        }
+
+        .job li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.55rem;
+            width: 5px;
+            height: 5px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .project {
+            background: var(--bg-alt);
+            border-left: 3px solid var(--primary);
+            padding: 0.6rem 0.85rem;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .project h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .project p { font-size: 0.8rem; color: var(--text-light); line-height: 1.45; }
+
+        /* Skills */
+        .skills-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+        .skill-tag {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        /* Education */
+        .edu { margin-bottom: 0.75rem; }
+        .edu:last-child { margin-bottom: 0; }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .edu h4 { font-size: 0.92rem; font-weight: 700; }
+        .edu .edu-date { font-size: 0.85rem; color: var(--text-light); }
+        .edu p { font-size: 0.85rem; color: #4a5568; }
+
+        /* Certificates & Languages */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .cert-item, .lang-item { font-size: 0.88rem; padding: 0.2rem 0; }
+        .lang-level { font-size: 0.8rem; color: var(--text-light); }
+
+        /* Print */
+        @media print {
+            @page { size: A4; margin: 0; }
+            html, body {
+                margin: 0 !important; padding: 0 !important;
+                background: white; width: 100%;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .page { margin: 0 !important; max-width: none; width: 100%; box-shadow: none; border-radius: 0; }
+            header {
+                padding: 1.5rem 2rem 1rem;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            main { padding: 1.5rem 2rem; }
+            .project {
+                background: var(--bg-alt) !important;
+                border-left: 3px solid var(--primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                break-inside: avoid;
+            }
+            .skill-tag {
+                background: var(--accent) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .job li::before {
+                background: var(--primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .section-title {
+                border-bottom-color: var(--primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            a { text-decoration: none !important; }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            header { padding: 1.5rem 1.25rem 1.25rem; }
+            main { padding: 1.25rem; }
+            header h1 { font-size: 1.75rem; }
+            .contact-bar { gap: 0.75rem; font-size: 0.82rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .two-col { grid-template-columns: 1fr; gap: 1rem; }
+            .job-header { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Khai Yuan Chee</h1>
+            <div class="subtitle">Senior Software Engineer</div>
+            <div class="contact-bar">
+                <a href="mailto:khaiyuan98@gmail.com">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    khaiyuan98@gmail.com
+                </a>
+                <a href="tel:+60173358891">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+                    017-3358891
+                </a>
+                <a href="https://www.linkedin.com/in/khai-yuan-chee-0a55601b5/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    linkedin.com/in/khai-yuan-chee
+                </a>
+            </div>
+        </header>
+
+        <main>
+            <section>
+                <h2 class="section-title">Experience</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Shinologic Sdn. Bhd. <span class="role">&mdash; Senior Software Engineer</span></div>
+                        <div class="job-date">Jul 2024 &ndash; Present</div>
+                    </div>
+                    <ul>
+                        <li>Automated extraction of textual data from verification imagery using deep learning models, maintaining high fidelity across non-standardized fonts and backgrounds</li>
+                        <li>Engineered a multimodal data pipeline using Gemini to automate text extraction and semantic analysis from unstructured image datasets</li>
+                        <li>Built a native Android application with Google ML Kit for real-time, on-device facial detection and recognition</li>
+                        <li>Implemented automated systems for secure payout withdrawal processes and end-to-end robotic workflows improving transaction accuracy</li>
+                        <li>Mentored junior developers through structured code reviews and one-on-one coaching</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Radiant Communication Sdn. Bhd. <span class="role">&mdash; Software Engineer</span></div>
+                        <div class="job-date">Mar 2020 &ndash; Jun 2024</div>
+                    </div>
+                    <ul>
+                        <li>Designed and implemented tailored CRM solutions for contact center environments, enabling efficient call routing, agent task management, and customer information access</li>
+                        <li>Collaborated in Agile development cycles including sprint planning, stand-ups, and retrospectives</li>
+                        <li>Resolved complex software issues swiftly, minimizing disruptions to contact center operations</li>
+                        <li>Delivered multiple concurrent projects on time with high client satisfaction</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project">
+                        <h4>Obscure Text Recognition</h4>
+                        <p>Automated OCR API to decode obfuscated text formats with high accuracy on distorted alphanumeric characters</p>
+                    </div>
+                    <div class="project">
+                        <h4>Face Detection App</h4>
+                        <p>Native Android app using Kotlin &amp; Google ML Kit for on-device facial detection and biometric recognition</p>
+                    </div>
+                    <div class="project">
+                        <h4>AI Chatbot</h4>
+                        <p>NLU-powered virtual agent using Google Dialogflow &amp; Genesys for live web chat interactions</p>
+                    </div>
+                    <div class="project">
+                        <h4>Case Management System</h4>
+                        <p>System for contact centre agents to log complaints, requests &amp; inquiries with multistep form builder</p>
+                    </div>
+                    <div class="project">
+                        <h4>ClearInteraction</h4>
+                        <p>Dashboard for viewing statistics of all interactions coming from the contact centre</p>
+                    </div>
+                    <div class="project">
+                        <h4>Survey Management</h4>
+                        <p>Tools for designing and propagating Web &amp; IVR surveys, integrated with Genesys Workspace</p>
+                    </div>
+                    <div class="project">
+                        <h4>Formflow</h4>
+                        <p>Web application enabling effortless design of web forms with seamless data integration</p>
+                    </div>
+                    <div class="project">
+                        <h4>Radiant Touch</h4>
+                        <p>Ticketing system for tracking, monitoring, and resolving client incidents with engineer productivity metrics</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">HTML / CSS</span>
+                    <span class="skill-tag">ASP.NET</span>
+                    <span class="skill-tag">jQuery</span>
+                    <span class="skill-tag">MSSQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Playwright</span>
+                    <span class="skill-tag">Gemini</span>
+                    <span class="skill-tag">Claude</span>
+                    <span class="skill-tag">OOP</span>
+                    <span class="skill-tag">Algorithms &amp; Data Structures</span>
+                </div>
+            </section>
+
+            <div class="two-col">
+                <section>
+                    <h2 class="section-title">Education</h2>
+                    <div class="edu">
+                        <div class="edu-header">
+                            <h4>Monash University</h4>
+                            <span class="edu-date">2017 &ndash; 2019</span>
+                        </div>
+                        <p>Bachelor of Computer Science &mdash; GPA 3.833 / WAM 82.385</p>
+                    </div>
+                    <div class="edu">
+                        <div class="edu-header">
+                            <h4>Sunway College</h4>
+                            <span class="edu-date">2016</span>
+                        </div>
+                        <p>AUSMAT &mdash; ATAR 95.40, Top 5%</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="section-title">Certifications</h2>
+                    <div class="cert-item">Google Professional Data Engineer</div>
+                    <div class="cert-item">Mastering Azure AI</div>
+
+                    <h2 class="section-title" style="margin-top: 1.25rem;">Languages</h2>
+                    <div class="lang-item">English <span class="lang-level">&mdash; Fluent</span></div>
+                    <div class="lang-item">Bahasa Malaysia <span class="lang-level">&mdash; Proficient</span></div>
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

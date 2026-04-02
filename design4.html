@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khai Yuan Chee - Resume (Design 4)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Crimson+Pro:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #fefefe;
+            --ink: #18181b;
+            --mid: #3f3f46;
+            --muted: #71717a;
+            --faint: #a1a1aa;
+            --line: #e4e4e7;
+            --wash: #f4f4f5;
+            --blue: #2563eb;
+            --blue-soft: #eff6ff;
+            --blue-dark: #1d4ed8;
+        }
+
+        body {
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            color: var(--ink);
+            background: #d4d4d8;
+            line-height: 1.55;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--bg);
+        }
+
+        @media screen {
+            .page {
+                margin: 2rem auto;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.12);
+            }
+        }
+
+        /* Header */
+        .top {
+            padding: 2.5rem 3rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: end;
+            background: var(--ink);
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 0 100%);
+            padding-bottom: 3rem;
+        }
+
+        .top h1 {
+            font-family: 'Crimson Pro', Georgia, serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+
+        .top .dot { color: var(--blue); }
+
+        .top .role {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #a1a1aa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.35rem;
+        }
+
+        .links a {
+            color: #d4d4d8;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.15s;
+        }
+
+        .links a:hover { color: var(--blue); }
+
+        .links svg { width: 13px; height: 13px; fill: var(--blue); flex-shrink: 0; }
+
+        /* Body */
+        .body { padding: 1rem 3rem 2.5rem; }
+
+        section { margin-bottom: 1.75rem; }
+        section:last-child { margin-bottom: 0; }
+
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .sec-num {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--blue);
+            background: var(--blue-soft);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sec-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--muted);
+        }
+
+        .sec-line {
+            flex: 1;
+            height: 1px;
+            background: var(--line);
+        }
+
+        /* Experience */
+        .role-block { margin-bottom: 1.25rem; }
+        .role-block:last-child { margin-bottom: 0; }
+
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .role-co { font-weight: 700; font-size: 0.95rem; }
+        .role-when { font-size: 0.78rem; color: var(--faint); font-weight: 500; }
+
+        .role-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 0.35rem;
+        }
+
+        .role-bullets { list-style: none; }
+
+        .role-bullets li {
+            font-size: 0.82rem;
+            color: var(--mid);
+            padding-left: 0.9rem;
+            position: relative;
+            margin-bottom: 0.2rem;
+            line-height: 1.5;
+        }
+
+        .role-bullets li::before {
+            content: '\2013';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        /* Projects */
+        .proj-flex {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .pj {
+            position: relative;
+            background: var(--wash);
+            padding: 0.7rem 0.8rem;
+            border-radius: 6px;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        .pj:hover { border-bottom-color: var(--blue); }
+
+        .pj h4 { font-size: 0.78rem; font-weight: 700; margin-bottom: 0.15rem; }
+        .pj p { font-size: 0.7rem; color: var(--muted); line-height: 1.4; }
+
+        /* Bottom grid */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+
+        /* Skills */
+        .skill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .skill-row:last-child { margin-bottom: 0; }
+
+        .sk {
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            background: var(--blue-soft);
+            color: var(--blue-dark);
+            border-radius: 4px;
+        }
+
+        .skill-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--faint);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Education */
+        .ed { margin-bottom: 0.65rem; }
+        .ed:last-child { margin-bottom: 0; }
+        .ed h4 { font-size: 0.88rem; font-weight: 700; }
+        .ed-meta { font-size: 0.78rem; color: var(--muted); }
+        .ed-nums { font-size: 0.75rem; color: var(--faint); }
+
+        /* Certs & Langs */
+        .mini-section { margin-top: 1.25rem; }
+
+        .mini-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .mini-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            padding: 0.2rem 0;
+            color: var(--mid);
+        }
+
+        .mini-val { font-weight: 600; color: var(--blue); font-size: 0.78rem; }
+
+        /* Footer accent */
+        .foot {
+            height: 4px;
+            background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 40%, var(--ink) 40%);
+        }
+
+        /* Print */
+        @media print {
+            @page { size: A4; margin: 0; }
+            html, body {
+                margin: 0 !important; padding: 0 !important;
+                background: white; width: 100%;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .page { margin: 0 !important; max-width: none; width: 100%; box-shadow: none; }
+            .top {
+                background: var(--ink) !important;
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), 0 100%);
+                padding: 2rem 2.5rem 2.5rem;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .top .dot { color: var(--blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .top h1 { font-size: 2.2rem; }
+            .body { padding: 0.75rem 2.5rem 2rem; }
+            section { margin-bottom: 1.25rem; }
+            .pj, .sk, .sec-num {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .pj { background: var(--wash) !important; break-inside: avoid; }
+            .pj:hover { border-bottom-color: transparent; }
+            .sk { background: var(--blue-soft) !important; color: var(--blue-dark) !important; }
+            .sec-num { background: var(--blue-soft) !important; color: var(--blue) !important; }
+            .role-bullets li::before { color: var(--blue) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .foot { background: linear-gradient(90deg, var(--blue) 0%, var(--blue) 40%, var(--ink) 40%) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .proj-flex { gap: 0.4rem; }
+            .pj h4 { font-size: 0.72rem; }
+            .pj p { font-size: 0.65rem; }
+            a { text-decoration: none !important; }
+        }
+
+        @media (max-width: 680px) {
+            .page { margin: 0; }
+            .top { flex-direction: column; align-items: flex-start; padding: 1.5rem 1.25rem 2rem; clip-path: none; }
+            .top { display: flex; gap: 1rem; }
+            .links { align-items: flex-start; }
+            .top h1 { font-size: 2rem; }
+            .body { padding: 1.25rem; }
+            .bottom-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .proj-flex { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="top">
+            <div>
+                <h1>Khai Yuan Chee<span class="dot">.</span></h1>
+                <div class="role">Senior Software Engineer</div>
+            </div>
+            <div class="links">
+                <a href="mailto:khaiyuan98@gmail.com">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    khaiyuan98@gmail.com
+                </a>
+                <a href="tel:+60173358891">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/></svg>
+                    017-3358891
+                </a>
+                <a href="https://www.linkedin.com/in/khai-yuan-chee-0a55601b5/" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    linkedin.com/in/khai-yuan-chee
+                </a>
+            </div>
+        </div>
+
+        <div class="body">
+            <section>
+                <div class="sec-head">
+                    <span class="sec-num">01</span>
+                    <span class="sec-title">Experience</span>
+                    <span class="sec-line"></span>
+                </div>
+                <div class="role-block">
+                    <div class="role-header">
+                        <span class="role-co">Shinologic Sdn. Bhd.</span>
+                        <span class="role-when">Jul 2024 &ndash; Present</span>
+                    </div>
+                    <div class="role-name">Senior Software Engineer</div>
+                    <ul class="role-bullets">
+                        <li>Automated extraction of textual data from verification imagery using deep learning models, maintaining high fidelity across non-standardized fonts and backgrounds</li>
+                        <li>Engineered a multimodal data pipeline using Gemini to automate text extraction and semantic analysis from unstructured image datasets</li>
+                        <li>Built a native Android application with Google ML Kit for real-time, on-device facial detection and recognition</li>
+                        <li>Implemented automated systems for secure payout withdrawal and end-to-end robotic workflows improving transaction accuracy</li>
+                        <li>Mentored junior developers through structured code reviews and one-on-one coaching</li>
+                    </ul>
+                </div>
+                <div class="role-block">
+                    <div class="role-header">
+                        <span class="role-co">Radiant Communication Sdn. Bhd.</span>
+                        <span class="role-when">Mar 2020 &ndash; Jun 2024</span>
+                    </div>
+                    <div class="role-name">Software Engineer</div>
+                    <ul class="role-bullets">
+                        <li>Designed and implemented tailored CRM solutions for contact center environments, enabling efficient call routing, agent task management, and customer information access</li>
+                        <li>Collaborated in Agile development cycles including sprint planning, stand-ups, and retrospectives</li>
+                        <li>Resolved complex software issues swiftly, minimizing disruptions to contact center operations</li>
+                        <li>Delivered multiple concurrent projects on time with high client satisfaction</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <div class="sec-head">
+                    <span class="sec-num">02</span>
+                    <span class="sec-title">Projects</span>
+                    <span class="sec-line"></span>
+                </div>
+                <div class="proj-flex">
+                    <div class="pj">
+                        <h4>Obscure Text Recognition</h4>
+                        <p>Automated OCR API decoding obfuscated text with high accuracy</p>
+                    </div>
+                    <div class="pj">
+                        <h4>Face Detection App</h4>
+                        <p>Android app with Google ML Kit for facial detection &amp; biometrics</p>
+                    </div>
+                    <div class="pj">
+                        <h4>AI Chatbot</h4>
+                        <p>NLU virtual agent via Dialogflow &amp; Genesys for live web chat</p>
+                    </div>
+                    <div class="pj">
+                        <h4>Case Management</h4>
+                        <p>Complaint logging with multistep forms, Genesys integrated</p>
+                    </div>
+                    <div class="pj">
+                        <h4>ClearInteraction</h4>
+                        <p>Contact centre interaction statistics dashboard</p>
+                    </div>
+                    <div class="pj">
+                        <h4>Survey Management</h4>
+                        <p>Web &amp; IVR survey design tools with Genesys Workspace</p>
+                    </div>
+                    <div class="pj">
+                        <h4>Formflow</h4>
+                        <p>Web form designer with seamless data integration</p>
+                    </div>
+                    <div class="pj">
+                        <h4>Radiant Touch</h4>
+                        <p>Incident ticketing with engineer productivity tracking</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="bottom-grid">
+                <section>
+                    <div class="sec-head">
+                        <span class="sec-num">03</span>
+                        <span class="sec-title">Skills</span>
+                        <span class="sec-line"></span>
+                    </div>
+                    <div class="skill-label">Languages</div>
+                    <div class="skill-row">
+                        <span class="sk">Python</span>
+                        <span class="sk">C#</span>
+                        <span class="sk">JavaScript</span>
+                        <span class="sk">Kotlin</span>
+                        <span class="sk">HTML</span>
+                        <span class="sk">CSS</span>
+                    </div>
+                    <div class="skill-label">Frameworks &amp; Tools</div>
+                    <div class="skill-row">
+                        <span class="sk">ASP.NET</span>
+                        <span class="sk">jQuery</span>
+                        <span class="sk">MSSQL</span>
+                        <span class="sk">Git</span>
+                        <span class="sk">Playwright</span>
+                    </div>
+                    <div class="skill-label">AI / ML</div>
+                    <div class="skill-row">
+                        <span class="sk">Gemini</span>
+                        <span class="sk">Claude</span>
+                        <span class="sk">Google ML Kit</span>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="sec-head">
+                        <span class="sec-num">04</span>
+                        <span class="sec-title">Education</span>
+                        <span class="sec-line"></span>
+                    </div>
+                    <div class="ed">
+                        <h4>Monash University</h4>
+                        <div class="ed-meta">B. Computer Science &middot; 2017&ndash;2019</div>
+                        <div class="ed-nums">GPA 3.833 &middot; WAM 82.385</div>
+                    </div>
+                    <div class="ed">
+                        <h4>Sunway College</h4>
+                        <div class="ed-meta">AUSMAT &middot; 2016</div>
+                        <div class="ed-nums">ATAR 95.40 &middot; Top 5%</div>
+                    </div>
+
+                    <div class="mini-section">
+                        <div class="mini-label">Certifications</div>
+                        <div class="mini-row"><span>Google Professional Data Engineer</span></div>
+                        <div class="mini-row"><span>Mastering Azure AI</span></div>
+                    </div>
+
+                    <div class="mini-section">
+                        <div class="mini-label">Languages</div>
+                        <div class="mini-row"><span>English</span><span class="mini-val">Fluent</span></div>
+                        <div class="mini-row"><span>Bahasa Malaysia</span><span class="mini-val">Proficient</span></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="foot"></div>
+    </div>
+</body>
+</html>

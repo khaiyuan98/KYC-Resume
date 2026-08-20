@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khai Yuan Chee - Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --navy: #16233f;
+        --navy-light: #2a3d63;
+        --gray-900: #1f2937;
+        --gray-700: #374151;
+        --gray-600: #4b5563;
+        --gray-500: #6b7280;
+        --gray-300: #d1d5db;
+        --gray-200: #e5e7eb;
+        --gray-100: #f3f4f6;
+        --gold: #a67c27;
+        --white: #ffffff;
+    }
+
+    body {
+        font-family: 'Source Sans 3', Arial, Helvetica, sans-serif;
+        color: var(--gray-900);
+        line-height: 1.55;
+        background: var(--gray-100);
+        font-size: 15px;
+    }
+
+    .page {
+        max-width: 840px;
+        margin: 0 auto;
+        background: var(--white);
+    }
+
+    @media screen {
+        .page {
+            margin: 2rem auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 12px 32px -8px rgba(0,0,0,0.12);
+        }
+    }
+
+    /* Header */
+    header {
+        background: var(--navy);
+        color: var(--white);
+        padding: 2.25rem 3rem 2rem;
+    }
+
+    header h1 {
+        font-family: 'Merriweather', Georgia, serif;
+        font-size: 1.85rem;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+    }
+
+    header .title {
+        font-size: 0.95rem;
+        color: var(--gray-300);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-top: 0.4rem;
+        font-weight: 500;
+    }
+
+    .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.5rem;
+        margin-top: 1.1rem;
+        padding-top: 1.1rem;
+        border-top: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .contact-row a, .contact-row span {
+        color: var(--gray-200);
+        text-decoration: none;
+        font-size: 0.85rem;
+    }
+
+    .contact-row a:hover { color: var(--white); }
+
+    /* Body */
+    main {
+        padding: 2rem 3rem 2.5rem;
+    }
+
+    section { margin-bottom: 1.85rem; }
+    section:last-child { margin-bottom: 0; }
+
+    .section-title {
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--navy);
+        padding-bottom: 0.45rem;
+        margin-bottom: 1rem;
+        border-bottom: 2px solid var(--navy);
+    }
+
+    /* Experience */
+    .job { margin-bottom: 1.4rem; }
+    .job:last-child { margin-bottom: 0; }
+
+    .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.25rem 1rem;
+    }
+
+    .job-company {
+        font-weight: 700;
+        font-size: 1.02rem;
+        color: var(--gray-900);
+    }
+
+    .job-date {
+        font-size: 0.82rem;
+        color: var(--gray-500);
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .job-role {
+        font-size: 0.88rem;
+        color: var(--navy-light);
+        font-weight: 600;
+        font-style: italic;
+        margin-bottom: 0.5rem;
+    }
+
+    .job ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .job li {
+        position: relative;
+        padding-left: 1.1rem;
+        font-size: 0.9rem;
+        color: var(--gray-700);
+        margin-bottom: 0.35rem;
+    }
+
+    .job li:last-child { margin-bottom: 0; }
+
+    .job li::before {
+        content: '\2013';
+        position: absolute;
+        left: 0;
+        color: var(--gray-500);
+    }
+
+    /* Projects */
+    .project { padding: 0.85rem 0; border-bottom: 1px solid var(--gray-200); }
+    .project:first-child { padding-top: 0; }
+    .project:last-child { padding-bottom: 0; border-bottom: none; }
+
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .project-header h4 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--gray-900);
+    }
+
+    .project-tags {
+        font-size: 0.75rem;
+        color: var(--navy-light);
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .project p {
+        font-size: 0.88rem;
+        color: var(--gray-600);
+        line-height: 1.55;
+    }
+
+    /* Two column: Education / Certs+Languages */
+    .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .edu-item { margin-bottom: 0.9rem; }
+    .edu-item:last-child { margin-bottom: 0; }
+
+    .edu-item h4 {
+        font-size: 0.92rem;
+        color: var(--gray-900);
+        font-weight: 700;
+    }
+
+    .edu-item .edu-meta {
+        font-size: 0.83rem;
+        color: var(--gray-600);
+        margin-top: 0.1rem;
+    }
+
+    .edu-item .edu-detail {
+        font-size: 0.82rem;
+        color: var(--gray-500);
+    }
+
+    .cert-list { list-style: none; margin-bottom: 1.2rem; }
+
+    .cert-list li {
+        font-size: 0.88rem;
+        color: var(--gray-700);
+        padding-left: 1rem;
+        position: relative;
+        margin-bottom: 0.3rem;
+    }
+
+    .cert-list li::before {
+        content: '\2013';
+        position: absolute;
+        left: 0;
+        color: var(--gray-500);
+    }
+
+    .lang-item {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.88rem;
+        color: var(--gray-700);
+        margin-bottom: 0.4rem;
+    }
+
+    .lang-item span:last-child { color: var(--gray-500); font-size: 0.82rem; }
+
+    /* Skills */
+    .skills-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .skill-pill {
+        background: var(--gray-100);
+        border: 1px solid var(--gray-200);
+        color: var(--gray-700);
+        padding: 0.3rem 0.8rem;
+        border-radius: 3px;
+        font-size: 0.82rem;
+        font-weight: 600;
+    }
+
+    /* Print */
+    @media print {
+        @page { size: A4; margin: 0; }
+        html, body {
+            width: 100%; margin: 0 !important; padding: 0 !important;
+            background: white;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact; color-adjust: exact;
+        }
+        .page { margin: 0 !important; box-shadow: none; max-width: none; width: 100%; }
+        header {
+            padding: 1.5rem 2rem 1.4rem;
+            background: var(--navy) !important;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        main { padding: 1.5rem 2rem 1.75rem; }
+        section { margin-bottom: 1.3rem; }
+        .job { margin-bottom: 1rem; }
+        .project { padding: 0.6rem 0; }
+        .skill-pill {
+            background: var(--gray-100) !important;
+            border-color: var(--gray-200) !important;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        a { text-decoration: none !important; }
+        .contact-row a, .contact-row span { color: var(--gray-200) !important; }
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+        header { padding: 1.75rem 1.5rem; }
+        main { padding: 1.5rem; }
+        .grid-2 { grid-template-columns: 1fr; gap: 1.5rem; }
+        .job-header, .project-header { flex-direction: column; gap: 0.15rem; }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <header>
+        <h1>Khai Yuan Chee</h1>
+        <div class="title">Senior Software Engineer</div>
+        <div class="contact-row">
+            <a href="mailto:khaiyuan98@gmail.com">khaiyuan98@gmail.com</a>
+            <span>&middot;</span>
+            <a href="tel:+60173358891">017-3358891</a>
+            <span>&middot;</span>
+            <a href="https://www.linkedin.com/in/khai-yuan-chee-0a55601b5/" target="_blank" rel="noopener">linkedin.com/in/khai-yuan-chee</a>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2 class="section-title">Experience</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-company">Shinologic Sdn. Bhd.</div>
+                    <div class="job-date">Jul 2024 &ndash; Present</div>
+                </div>
+                <div class="job-role">Senior Software Engineer</div>
+                <ul>
+                    <li>Automated extraction of textual data from verification imagery using deep learning models, maintaining high fidelity across non-standardized fonts and backgrounds</li>
+                    <li>Engineered a multimodal data pipeline using Gemini to automate text extraction and semantic analysis from unstructured image datasets</li>
+                    <li>Built a native Android application with Google ML Kit for real-time, on-device facial detection and recognition</li>
+                    <li>Implemented automated systems for secure payout withdrawal processes and end-to-end robotic workflows improving transaction accuracy</li>
+                    <li>Optimized image preprocessing and inference pipeline, reducing average verification processing time</li>
+                    <li>Collaborated cross-functionally with compliance and product teams to align automated verification systems with KYC/AML requirements</li>
+                    <li>Mentored junior developers through structured code reviews and one-on-one coaching</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div class="job-company">Radiant Communication Sdn. Bhd.</div>
+                    <div class="job-date">Mar 2020 &ndash; Jun 2024</div>
+                </div>
+                <div class="job-role">Software Engineer</div>
+                <ul>
+                    <li>Designed and implemented tailored CRM solutions for contact center environments, enabling efficient call routing, agent task management, and customer information access</li>
+                    <li>Collaborated in Agile development cycles including sprint planning, stand-ups, and retrospectives</li>
+                    <li>Resolved complex software issues swiftly, minimizing disruptions to contact center operations</li>
+                    <li>Integrated third-party APIs, including Genesys, to extend CRM functionality across contact center workflows</li>
+                    <li>Authored technical documentation and led knowledge-transfer sessions to onboard new team members</li>
+                    <li>Delivered multiple concurrent projects on time with high client satisfaction</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Projects</h2>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Obscure Text Recognition</h4>
+                    <div class="project-tags">Python &middot; OCR &middot; Deep Learning</div>
+                </div>
+                <p>Automated OCR API decoding obfuscated, distorted alphanumeric text (rotated, warped, low-contrast) from verification imagery. Combined image preprocessing with deep learning-based character recognition to hold high fidelity across non-standard fonts and noisy backgrounds, cutting manual review workload significantly.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Face Detection App</h4>
+                    <div class="project-tags">Kotlin &middot; Android &middot; Google ML Kit</div>
+                </div>
+                <p>Native Android app in Kotlin using Google ML Kit for real-time, on-device facial detection and biometric recognition. Built offline-first for KYC verification flows, so identity confirms instantly without round-tripping images to a server.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>AI Chatbot</h4>
+                    <div class="project-tags">Dialogflow &middot; Genesys &middot; NLU</div>
+                </div>
+                <p>NLU-powered virtual agent on Google Dialogflow, integrated with Genesys for live web chat. Handled common customer inquiries and routed complex cases to human agents, cutting average handling time via automated first-response triage.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Case Management System</h4>
+                    <div class="project-tags">ASP.NET &middot; MSSQL &middot; Genesys Workspace</div>
+                </div>
+                <p>Web app letting contact centre agents log complaints, requests &amp; inquiries through a configurable multistep form builder. Integrated with Genesys Workspace to auto-populate customer context and track cases from intake through resolution.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>ClearInteraction</h4>
+                    <div class="project-tags">Analytics Dashboard &middot; MSSQL</div>
+                </div>
+                <p>Analytics dashboard surfacing real-time and historical stats on every interaction handled by the contact centre &mdash; call volume, handling time, agent performance. Gave supervisors operational visibility without manual report compilation.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Survey Management</h4>
+                    <div class="project-tags">Web &middot; IVR &middot; Genesys Workspace</div>
+                </div>
+                <p>Toolset for designing, deploying &amp; analyzing Web and IVR surveys, integrated with Genesys Workspace to auto-trigger surveys post-interaction. Supported branching logic and multi-channel response collection to lift feedback capture rates.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Formflow</h4>
+                    <div class="project-tags">JavaScript &middot; jQuery &middot; ASP.NET</div>
+                </div>
+                <p>Web app for drag-and-drop design of custom web forms with seamless backend data integration. Let non-technical teams build and deploy forms independently, cutting turnaround time for new intake workflows.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <h4>Radiant Touch</h4>
+                    <div class="project-tags">ASP.NET &middot; MSSQL</div>
+                </div>
+                <p>Ticketing system for tracking, monitoring &amp; resolving client incidents, with SLA tracking and engineer productivity metrics. Centralized incident history and reporting to raise accountability and response times across the support team.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-row">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">C#</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">Kotlin</span>
+                <span class="skill-pill">HTML / CSS</span>
+                <span class="skill-pill">ASP.NET</span>
+                <span class="skill-pill">jQuery</span>
+                <span class="skill-pill">MSSQL</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">Playwright</span>
+                <span class="skill-pill">Gemini</span>
+                <span class="skill-pill">Claude</span>
+                <span class="skill-pill">OOP</span>
+                <span class="skill-pill">Data Structures</span>
+            </div>
+        </section>
+
+        <section>
+            <div class="grid-2">
+                <div>
+                    <h2 class="section-title">Education</h2>
+                    <div class="edu-item">
+                        <h4>Monash University</h4>
+                        <div class="edu-meta">B. Computer Science &middot; 2017 &ndash; 2019</div>
+                        <div class="edu-detail">GPA 3.833 &middot; WAM 82.385</div>
+                    </div>
+                    <div class="edu-item">
+                        <h4>Sunway College</h4>
+                        <div class="edu-meta">AUSMAT &middot; 2016</div>
+                        <div class="edu-detail">ATAR 95.40 &middot; Top 5%</div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="section-title">Certifications</h2>
+                    <ul class="cert-list">
+                        <li>Google Professional Data Engineer</li>
+                        <li>Mastering Azure AI</li>
+                    </ul>
+
+                    <h2 class="section-title">Languages</h2>
+                    <div class="lang-item"><span>English</span><span>Fluent</span></div>
+                    <div class="lang-item"><span>Bahasa Malaysia</span><span>Fluent</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+</body>
+</html>
